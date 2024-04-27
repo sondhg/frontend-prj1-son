@@ -2,14 +2,13 @@ import { useState } from "react";
 import AddOrder from "./AddOrder";
 import DisplayOrder from "./DisplayOrder";
 
-
 const MyComponents = (props) => {
   const [listOrders, setListOrders] = useState([
     { id: 0, vehicleCode: "johncena", startPoint: "A", endPoint: "A" },
   ]);
 
   const handleAddNewOrder = (orderObj) => {
-    setListOrders([orderObj, ...listOrders]);
+    setListOrders([orderObj, ...listOrders]); //xem lai youtube de hieu
   };
 
   const handleDeleteOrder = (orderId) => {
