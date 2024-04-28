@@ -1,0 +1,6 @@
+{
+  "agvs": [
+    { "vehicleCode": "Porsche 911", "velocity": "30m/s", "obstacle": "Yes" },
+    { "vehicleCode": "Lightning McQueen", "velocity": "10m/s", "obstacle": "No" }
+  ]
+}
