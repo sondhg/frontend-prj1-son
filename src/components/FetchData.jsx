@@ -2,19 +2,10 @@
 //type  "npx json-server --watch _data/db-fake.json --port 8000" in new terminal
 //port 8000 is used to seperate from port 5173 which is used for AGV web
 //watch https://youtu.be/eao7ABGFUXs?si=rFaSXwp59VoJhvyP and its playlist from Net Ninja
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 const FetchData = () => {
   const [dataApi, setDataApi] = useState(null);
-  /* useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => {
-        setDataApi(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, [dataApi]); */
 
   useEffect(() => {
     fetch("http://localhost:8000/agvs")
