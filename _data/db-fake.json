@@ -1,6 +1,14 @@
 {
   "agvs": [
-    { "vehicleCode": "Porsche 911", "velocity": "30m/s", "obstacle": "Yes" },
-    { "vehicleCode": "Lightning McQueen", "velocity": "10m/s", "obstacle": "No" }
+    {
+      "vehicle_code": "Porsche 911",
+      "velocity": "30m/s",
+      "is_obstacle": "Yes"
+    },
+    {
+      "vehicle_code": "Lightning McQueen",
+      "velocity": "10m/s",
+      "is_obstacle": "No"
+    }
   ]
 }

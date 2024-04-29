@@ -30,14 +30,14 @@ const DisplayOrder = (props) => {
       </div>
 
       {isShowHideListOrder && (
-        <>
+        <div>
           {listOrders.map((order) => {
             return (
               <div className="display-order-container">
-                <div className="display-order-box" key={order.id}>
+                <div className="display-order-box">
                   <div>
                     <h4>Order ID: #{order.id}</h4>
-                    <ul>
+                    <ul key={order.id}>
                       <li>Vehicle code: {order.vehicleCode}</li>
                       <li>Start point: {order.startPoint}</li>
                       <li>End point: {order.endPoint}</li>
@@ -55,7 +55,7 @@ const DisplayOrder = (props) => {
               </div>
             );
           })}
-        </>
+        </div>
       )}
     </div>
   );

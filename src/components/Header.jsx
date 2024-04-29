@@ -1,17 +1,19 @@
+import {Link} from 'react-router-dom'
+
 function Header() {
   return (
     <header className="main-header">
       <nav>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#">Login</a>
+            <Link to="/output">Display</Link>
           </li>
         </ul>
       </nav>
-      <h1 className="big-page-title">AGV: Command and Display Data</h1>
+      <h1 className="big-page-title">AGV UI</h1>
     </header>
   );
 }

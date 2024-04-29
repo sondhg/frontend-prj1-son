@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-const AddOrder = (props) => {
-
-  const [count, setCount] = useState(0);
+const AddOrder = () => {
+  //const [count, setCount] = useState(0);
 
   const [vehicleCode, setVehicleId] = useState("johncena");
   const [startPoint, setStartPoint] = useState("A");
   const [endPoint, setEndPoint] = useState("A");
+  const [isPending, setIsPending] = useState(false);
+
+  const history = useHistory();
 
   const optionsVehicleCode = [{ label: "johncena", value: "johncena" }];
 
@@ -37,12 +40,28 @@ const AddOrder = (props) => {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    props.handleAddNewOrder({
-      id: /* Math.floor(Math.random() * 100 + 1) + "-random" */ count,
+    const agvOrder = {
+      vehicleCode,
+      startPoint,
+      endPoint,
+    };
+    setIsPending(true);
+    fetch("http://localhost:8000/agvs", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(agvOrder),
+    }).then(() => {
+      console.log("new order added woo");
+      setIsPending(false);
+      history.push("/output");
+    });
+    /* props.handleAddNewOrder({
+      id: count,
+      
       vehicleCode: vehicleCode,
       startPoint: startPoint,
       endPoint: endPoint,
-    });
+    }); */
   };
 
   return (
@@ -56,36 +75,53 @@ const AddOrder = (props) => {
               onChange={(event) => handleChangeVehicleId(event)}
             >
               {optionsVehicleCode.map((option) => (
-                <option key={option.value} value={option.value}>{option.label}</option>
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
               ))}
             </select>
           </div>
           <br></br>
           <div className="dropdown-box">
-          <h3>Select a start point:</h3>
+            <h3>Select a start point:</h3>
             <select
               value={startPoint}
               onChange={(event) => handleChangeStartPoint(event)}
             >
               {optionsStartPoint.map((option) => (
-                <option key={option.value} value={option.value}>{option.label}</option>
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
               ))}
             </select>
           </div>
           <br></br>
           <div className="dropdown-box">
-          <h3>Select an end point:</h3>
+            <h3>Select an end point:</h3>
             <select
               value={endPoint}
               onChange={(event) => handleChangeEndPoint(event)}
             >
               {optionsEndPoint.map((option) => (
-                <option key={option.value} value={option.value}>{option.label}</option>
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
               ))}
             </select>
           </div>
         </div>
-        <button onClick={()=>setCount(count+1)} className="pressed-btn draft-btn">Send to draft</button>
+        {/* <button
+          onClick={() => setCount(count + 1)}
+          className="pressed-btn draft-btn"
+        >
+          Send to draft
+        </button> */}
+        {!isPending && <button className="pressed-btn">Send order</button>}
+        {isPending && (
+          <button className="pressed-btn" disabled>
+            Sending order...
+          </button>
+        )}
       </form>
     </div>
   );
