@@ -9,7 +9,7 @@
 body {
   background: rgb(3, 37, 50);
   color: hsl(200, 100%, 90%);
-  max-width: 1100px;
+  max-width: 1200px;
   padding: 1rem;
   margin: 0 auto;
   font-size: 16px;
@@ -63,9 +63,6 @@ a {
   }
 }
 
-footer {
-  font-size: 12px;
-}
 
 select {
   background: #2a2f3b;
@@ -252,4 +249,18 @@ table {
   tr:nth-child(even) {
     background-color: #2a2f3b;
   }
+}
+
+.footer {
+  margin-top:auto;
+  //display: flex;
+  height: 50px;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
