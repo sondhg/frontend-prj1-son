@@ -1,35 +1,28 @@
 import "./styles.scss";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+//import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
-import Instruction from "./components/Instruction.jsx";
-import AddOrder from "./components/AddOrder.jsx";
+import Home from "./components/Home.jsx";
 import FetchData from "./components/FetchData.jsx";
 import NotFound from "./components/NotFound.jsx";
 
 function App() {
   document.title = "AGV UI";
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <Header />
         <div className="content">
-          <Switch>
-            <Route exact path="/">
-              <Instruction />
-              <AddOrder />
-            </Route>
-            <Route path="/output">
-              <FetchData />
-            </Route>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/output" element={<FetchData />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </div>
         <Footer />
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddOrder = () => {
   //const [count, setCount] = useState(0);
@@ -9,7 +9,7 @@ const AddOrder = () => {
   const [endPoint, setEndPoint] = useState("A");
   const [isPending, setIsPending] = useState(false);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const optionsVehicleCode = [{ label: "johncena", value: "johncena" }];
 
@@ -47,13 +47,13 @@ const AddOrder = () => {
     };
     setIsPending(true);
     fetch("http://localhost:8000/agvs", {
-      method: "PUT",
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(agvOrder),
     }).then(() => {
       console.log("new order added woo");
       setIsPending(false);
-      history.push("/output");
+      navigate("/output");
     });
     /* props.handleAddNewOrder({
       id: count,
