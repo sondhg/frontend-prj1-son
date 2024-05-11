@@ -2,7 +2,7 @@ import { useState } from "react";
 import AddOrder from "./AddOrder";
 import DisplayOrder from "./DisplayOrder";
 
-const MyComponents = (props) => {
+const AddAndDisplay = (props) => {
   const [listOrders, setListOrders] = useState([
     { id: 0, vehicleCode: "johncena", startPoint: "A", endPoint: "A" },
   ]);
@@ -32,4 +32,4 @@ const MyComponents = (props) => {
   );
 };
 
-export default MyComponents;
+export default AddAndDisplay;

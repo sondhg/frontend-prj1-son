@@ -3,12 +3,14 @@
     {
       "vehicle_code": "Porsche 911",
       "velocity": "30m/s",
-      "is_obstacle": "Yes"
+      "is_obstacle": "Yes",
+      "id": "1300"
     },
     {
       "vehicle_code": "Lightning McQueen",
       "velocity": "10m/s",
-      "is_obstacle": "No"
+      "is_obstacle": "No",
+      "id": "4615"
     }
   ]
 }

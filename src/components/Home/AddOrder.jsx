@@ -47,7 +47,7 @@ const AddOrder = () => {
     };
     setIsPending(true);
     fetch("http://localhost:8000/agvs", {
-      method: "POST",
+      method: "PUT", //nho doi ve POST
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(agvOrder),
     }).then(() => {

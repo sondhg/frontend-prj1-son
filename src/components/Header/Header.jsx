@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header className="main-header">
@@ -9,6 +9,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/output">Display</Link>
+          </li>
+          <li>
+            <Link to="/manage">Manage</Link>
           </li>
         </ul>
       </nav>

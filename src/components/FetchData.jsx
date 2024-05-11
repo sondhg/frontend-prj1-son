@@ -1,5 +1,8 @@
 //open a new terminal, seperated from the one used to run AGV web by "npm run dev"
-//type  "npx json-server --watch _data/db-fake.json --port 8000" in new terminal
+
+//type  "npx json-server --watch _data/db-display-fake.json --port 8000" in new terminal
+//type  "npx json-server --watch _data/db-add-fake.json --port 8081" in another new terminal
+
 //port 8000 is used to seperate from port 5173 which is used for AGV web
 //watch https://youtu.be/eao7ABGFUXs?si=rFaSXwp59VoJhvyP and its playlist from Net Ninja
 import { useEffect, useState } from "react";
