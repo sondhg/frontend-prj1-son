@@ -3,6 +3,9 @@ import "./ManageOrder.scss";
 import { FcPlus } from "react-icons/fc";
 import { useState } from "react";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ManageOrder = (props) => {
   const [showModalCreateOrder, setShowModalCreateOrder] = useState(false);
 

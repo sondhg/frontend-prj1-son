@@ -1,11 +1,10 @@
-//import "./styles.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header.jsx";
-import Footer from "./components/Footer.jsx";
+import Application from "./Application.jsx";
 import Home from "./components/Home/Home.jsx";
 import FetchData from "./components/FetchData.jsx";
 import NotFound from "./components/NotFound.jsx";
-import ManageOrder from "./components/NewHome/ManageOrder.jsx";
+import ManageOrder from "./components/Manage/ManageOrder.jsx";
+import Admin from "./components/Admin/Admin.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -13,18 +12,17 @@ function App() {
   return (
     <div className="app-container">
       <BrowserRouter>
-        <div>
-          <Header />
-          <div className="content">
-            <Routes>
+        <Routes>
+          <Route>
+            <Route path="/" element={<Application />}>
               <Route index element={<Home />} />
-              <Route path="/output" element={<FetchData />} />
-              <Route path="/manage" element={<ManageOrder />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
-          <Footer />
-        </div>
+              <Route path="output" element={<FetchData />} />
+              <Route path="manage" element={<ManageOrder />} />
+              {/* <Route path="*" element={<NotFound />} /> */}
+            </Route>
+            <Route path="admin" element={<Admin />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </div>
   );
