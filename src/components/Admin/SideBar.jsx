@@ -17,6 +17,8 @@ import {
   FaHeart,
 } from "react-icons/fa";
 import sidebarBg from "../../assets/bg2.jpg";
+import { Link } from "react-router-dom";
+
 const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
   return (
     <>
@@ -51,6 +53,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
               //   suffix={<span className="badge red">New</span>}
             >
               Dashboard
+              <Link to="/admin" />
             </MenuItem>
             {/* <MenuItem icon={<FaGem />}>Components</MenuItem> */}
           </Menu>
@@ -61,7 +64,10 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
               icon={<FaGem />}
               title="Features"
             >
-              <MenuItem> Tính năng 1</MenuItem>
+              <MenuItem>
+                Manage Orders
+                <Link to="/admin/manage-orders" />
+              </MenuItem>
               <MenuItem> Tính năng 2</MenuItem>
               <MenuItem> Tính năng 3</MenuItem>
             </SubMenu>

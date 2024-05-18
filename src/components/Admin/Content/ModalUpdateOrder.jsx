@@ -1,36 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import axios from "axios";
-const ModalCreateOrder = (props) => {
-  const { show, setShow } = props;
+import { FcPlus } from "react-icons/fc";
+import { toast } from "react-toastify";
+import { putUpdateOrder } from "../../../services/apiServices";
+import _ from "lodash";
+
+const ModalUpdateOrder = (props) => {
+  const { show, setShow, dataUpdate } = props;
+  //ko cần dùng props.dataUpdate ở phần code sau nữa, chỉ cần dùng biến dataUpdate
 
   const handleClose = () => {
     setShow(false);
-    setVehicleCode("johncena");
+    setVehicleCode("McLaren");
     setStartPoint("A");
     setEndPoint("A");
+    setQuickNote("");
   };
 
-  const [vehicleCode, setVehicleCode] = useState("johncena");
+  const [vehicleCode, setVehicleCode] = useState("McLaren");
   const [startPoint, setStartPoint] = useState("A");
   const [endPoint, setEndPoint] = useState("A");
+  const [quickNote, setQuickNote] = useState("");
   //const [isPending, setIsPending] = useState(false);
+
+  useEffect(() => {
+    if (!_.isEmpty(dataUpdate)) {
+      //Nếu biến dataUpdate ko rỗng thì update state
+      setVehicleCode(dataUpdate.vehicleCode);
+      setStartPoint(dataUpdate.startPoint);
+      setEndPoint(dataUpdate.endPoint);
+      setQuickNote(dataUpdate.quickNote);
+    }
+  }, [props.dataUpdate]);
 
   const handleSubmitCreateOrder = async () => {
     //validate: mai làm sau
 
-    const form = new FormData();
-    form.append("vehicleCode", vehicleCode);
-    form.append("startPoint", startPoint);
-    form.append("endPoint", endPoint);
+    let data = await putUpdateOrder(
+      dataUpdate.id,
+      startPoint,
+      endPoint,
+      quickNote
+    );
+    //cần phần headers thì mới chạy đc, vì json-server của mình ko hoạt động với formdata giống video
+    if (data) {
+      //chưa có validate
 
-    let res = await axios.post("http://localhost:8081/orders-sent", form, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }); //cần phần headers thì mới chạy đc, vì json-server của mình ko hoạt động với formdata giống video
-    console.log(">>> check res: ", res);
+      toast.success("Update succeeded!");
+      handleClose();
+      await props.fetchListOrders();
+    }
   };
 
   return (
@@ -47,7 +67,7 @@ const ModalCreateOrder = (props) => {
         className="modal-add-order"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add new order</Modal.Title>
+          <Modal.Title>Update an order</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
@@ -57,9 +77,11 @@ const ModalCreateOrder = (props) => {
                 className="form-select"
                 value={vehicleCode}
                 onChange={(event) => setVehicleCode(event.target.value)}
+                disabled //tương đương disabled={true}, tức ko cho phép thay đổi trường vehicleCode
               >
-                <option value="johncena">johncena</option>
-                <option value="undertaker">undertaker</option>
+                <option value="McLaren">McLaren</option>
+                <option value="Pagani">Pagani</option>
+                <option value="Bentley">Bentley</option>
               </select>
             </div>
             <div className="col-md-4">
@@ -88,6 +110,15 @@ const ModalCreateOrder = (props) => {
                 <option value="D">D</option>
               </select>
             </div>
+            <div className="col-md-6">
+              <label className="form-label">Quick note</label>
+              <input
+                type="text"
+                className="form-control"
+                value={quickNote}
+                onChange={(event) => setQuickNote(event.target.value)}
+              />
+            </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
@@ -103,4 +134,4 @@ const ModalCreateOrder = (props) => {
   );
 };
 
-export default ModalCreateOrder;
+export default ModalUpdateOrder;

@@ -43,9 +43,6 @@ const Header = () => {
             <NavLink to="/output" className="nav-link">
               Display
             </NavLink>
-            <NavLink to="/manage" className="nav-link">
-              Manage
-            </NavLink>
             <NavLink to="/admin" className="nav-link">
               Admin
             </NavLink>
