@@ -6,8 +6,8 @@ const postCreateNewOrder = (vehicleCode, startPoint, endPoint, quickNote) => {
   form.append("endPoint", endPoint);
   form.append("quickNote", quickNote);
 
-  //order-sent là viết tắt của http://localhost:8081/orders-sent nhờ axiosCustomize.jsx
-  return axios.post("orders-sent", form, {
+  //order-draft là viết tắt của http://localhost:8081/orders-draft nhờ axiosCustomize.jsx
+  return axios.post("orders-draft", form, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -17,7 +17,7 @@ const postCreateNewOrder = (vehicleCode, startPoint, endPoint, quickNote) => {
 
 const getAllOrders = () => {
   return axios.get(
-    "orders-sent" /* , {
+    "orders-draft" /* , {
     headers: {
       "Content-Type": "application/json",
     },
@@ -34,7 +34,7 @@ const putUpdateOrder = (id, startPoint, endPoint, quickNote) => {
   form.append("endPoint", endPoint);
   form.append("quickNote", quickNote);
 
-  return axios.put("orders-sent", form, {
+  return axios.put("orders-draft", form, {
     headers: {
       "Content-Type": "application/json", //cần database để sửa, có thể bỏ headers
     },
@@ -42,12 +42,17 @@ const putUpdateOrder = (id, startPoint, endPoint, quickNote) => {
 };
 
 const deleteOrder = (orderId) => {
-  return axios.delete("orders-sent", { data: { id: orderId } });
+  return axios.delete("orders-draft", { data: { id: orderId } });
 };
 
 const getOrderWithPaginate = (page, limit) => {
-  return axios.get(`orders-sent?page=${page}&limit=${limit}`); //đặt url trước dấu ?
+  return axios.get(`orders-draft?page=${page}&limit=${limit}`); //đặt url trước dấu ?
 };
+
+const getDisplayAgvParams = () => {
+  return axios.get("agv-display");
+};
+//có thể dùng cho TableDisplayAgvParams, nhưng code cũ chạy ổn r nên thôi
 
 export {
   postCreateNewOrder,
@@ -55,4 +60,5 @@ export {
   putUpdateOrder,
   deleteOrder,
   getOrderWithPaginate,
+  getDisplayAgvParams
 };

@@ -1,14 +1,5 @@
-import { useEffect, useState } from "react";
-import ReactPaginate from "react-paginate";
-
-const TableOrdersPaginate = (props) => {
+const TableOrders = (props) => {
   const { listOrders } = props; //giống const listOrders = props.listOrders
-
-  const [pageCount, setPageCount] = useState(0);
-
-  const handlePageClick = (event) => {
-    console.log(`User requested page number ${event.selected}`);
-  };
 
   return (
     <>
@@ -35,7 +26,6 @@ const TableOrdersPaginate = (props) => {
                   <td>{item.endPoint}</td>
                   <td>{item.quickNote}</td>
                   <td>
-                    <button className="btn btn-secondary">View</button>
                     <button
                       className="btn btn-warning mx-3"
                       onClick={() => props.handleClickBtnUpdate(item)}
@@ -54,33 +44,13 @@ const TableOrdersPaginate = (props) => {
             })}
           {listOrders && listOrders.length === 0 && (
             <tr>
-              <td colSpan={"4"}>Data not found</td>
+              <td colSpan={"6"}>Data not found</td>
             </tr>
           )}
         </tbody>
       </table>
-      <ReactPaginate
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={2}
-        pageCount={5}
-        previousLabel="< previous"
-        pageClassName="page-item"
-        pageLinkClassName="page-link"
-        previousClassName="page-item"
-        previousLinkClassName="page-link"
-        nextClassName="page-item"
-        nextLinkClassName="page-link"
-        breakLabel="..."
-        breakClassName="page-item"
-        breakLinkClassName="page-link"
-        containerClassName="pagination"
-        activeClassName="active"
-        renderOnZeroPageCount={null}
-      />
     </>
   );
 };
 
-export default TableOrdersPaginate;
+export default TableOrders;

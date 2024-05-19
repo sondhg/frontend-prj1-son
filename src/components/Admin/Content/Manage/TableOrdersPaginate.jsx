@@ -1,5 +1,14 @@
-const TableOrders = (props) => {
+import { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
+
+const TableOrdersPaginate = (props) => {
   const { listOrders } = props; //giống const listOrders = props.listOrders
+
+  const [pageCount, setPageCount] = useState(0);
+
+  const handlePageClick = (event) => {
+    console.log(`User requested page number ${event.selected}`);
+  };
 
   return (
     <>
@@ -26,7 +35,7 @@ const TableOrders = (props) => {
                   <td>{item.endPoint}</td>
                   <td>{item.quickNote}</td>
                   <td>
-                    <button className="btn btn-secondary">View</button>
+                    <button className="btn btn-secondary mx-3" >View</button>
                     <button
                       className="btn btn-warning mx-3"
                       onClick={() => props.handleClickBtnUpdate(item)}
@@ -34,10 +43,16 @@ const TableOrders = (props) => {
                       Update
                     </button>
                     <button
-                      className="btn btn-danger"
+                      className="btn btn-danger mx-3"
                       onClick={() => props.handleClickBtnDelete(item)}
                     >
                       Delete
+                    </button>
+                    <button
+                      className="btn btn-success mx-3"
+                      onClick={() => props.handleClickBtnProceed(item)}
+                    >
+                      Proceed
                     </button>
                   </td>
                 </tr>
@@ -50,8 +65,28 @@ const TableOrders = (props) => {
           )}
         </tbody>
       </table>
+      <ReactPaginate
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        pageCount={5}
+        previousLabel="< previous"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakLabel="..."
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
+        renderOnZeroPageCount={null}
+      />
     </>
   );
 };
 
-export default TableOrders;
+export default TableOrdersPaginate;

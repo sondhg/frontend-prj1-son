@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 import { toast } from "react-toastify";
-import { putUpdateOrder } from "../../../services/apiServices";
+import { putUpdateOrder } from "../../../../services/apiServices";
 import _ from "lodash";
 
 const ModalUpdateOrder = (props) => {

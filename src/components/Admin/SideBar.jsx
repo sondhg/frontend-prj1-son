@@ -68,7 +68,11 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                 Manage Orders
                 <Link to="/admin/manage-orders" />
               </MenuItem>
-              <MenuItem> Tính năng 2</MenuItem>
+              <MenuItem>
+                {" "}
+                Real-time Data Display
+                <Link to="/admin/agv-params-display" />
+              </MenuItem>
               <MenuItem> Tính năng 3</MenuItem>
             </SubMenu>
           </Menu>
@@ -95,7 +99,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                   overflow: "hidden",
                 }}
               >
-                UI Source Code
+                GUI Source Code
               </span>
             </a>
           </div>
