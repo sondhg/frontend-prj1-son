@@ -48,9 +48,15 @@
       "startPoint": "A",
       "endPoint": "A",
       "quickNote": "lol"
+    },
+    {
+      "id": "232d",
+      "vehicleCode": "Pagani",
+      "startPoint": "A",
+      "endPoint": "B",
+      "quickNote": "merge main and redo-style-bootstrap"
     }
   ],
-
   "agv-display": [
     {
       "vehicle_code": "Pagani",
@@ -58,7 +64,8 @@
       "is_obstacle": "Yes",
       "Agv_battery": "30%",
       "previous_node": "A",
-      "next_node": "B"
+      "next_node": "B",
+      "id": "c6ce"
     },
     {
       "vehicle_code": "McLaren",
@@ -66,10 +73,10 @@
       "is_obstacle": "Yes",
       "Agv_battery": "50%",
       "previous_node": "C",
-      "next_node": "B"
+      "next_node": "B",
+      "id": "b08b"
     }
   ],
-
   "orderProceeded": [
     {
       "id": "477f",
