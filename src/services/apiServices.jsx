@@ -45,6 +45,16 @@ const deleteOrder = (orderId) => {
   return axios.delete("orders-draft", { data: { id: orderId } });
 };
 
+const proceedOrder = (order) => {
+  return axios.post("orderProceeded", order, {
+    headers: {
+      "Content-Type": "application/json",
+    }, //biến order sẽ là 1 object, cần nghĩ cách post giống hàm postCreateNewOrder
+  });
+};
+
+export default proceedOrder;
+
 const getOrderWithPaginate = (page, limit) => {
   return axios.get(`orders-draft?page=${page}&limit=${limit}`); //đặt url trước dấu ?
 };
@@ -59,6 +69,7 @@ export {
   getAllOrders,
   putUpdateOrder,
   deleteOrder,
+  proceedOrder,
   getOrderWithPaginate,
-  getDisplayAgvParams
+  getDisplayAgvParams,
 };

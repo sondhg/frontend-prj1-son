@@ -8,14 +8,8 @@ import {
   SidebarFooter,
   SidebarContent,
 } from "react-pro-sidebar";
-import {
-  FaTachometerAlt,
-  FaGem,
-  FaList,
-  FaGithub,
-  FaRegLaughWink,
-  FaHeart,
-} from "react-icons/fa";
+import { FaList, FaGithub } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
 import sidebarBg from "../../assets/bg2.jpg";
 import { Link } from "react-router-dom";
 
@@ -49,7 +43,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
         <SidebarContent>
           <Menu iconShape="circle">
             <MenuItem
-              icon={<FaTachometerAlt />}
+              icon={<MdDashboard />}
               //   suffix={<span className="badge red">New</span>}
             >
               Dashboard
@@ -61,7 +55,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
             <SubMenu
               //   suffix={<span className="badge yellow">3</span>}
               //   icon={<FaRegLaughWink />}
-              icon={<FaGem />}
+              icon={<FaList />}
               title="Features"
             >
               <MenuItem>

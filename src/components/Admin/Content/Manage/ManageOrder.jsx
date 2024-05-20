@@ -10,16 +10,21 @@ import "react-toastify/dist/ReactToastify.css";
 import TableOrders from "./TableOrders";
 import ModalUpdateOrder from "./ModalUpdateOrder";
 import ModalDeleteOrder from "./ModalDeleteOrder";
+import ModalProceedOrder from "./ModalProceedOrder";
 import TableOrdersPaginate from "./TableOrdersPaginate";
 
 const ManageOrder = (props) => {
   const LIMIT_ORDER = 6;
   const [showModalCreateOrder, setShowModalCreateOrder] = useState(false);
+  
   const [showModalUpdateOrder, setShowModalUpdateOrder] = useState(false);
   const [showModalDeleteOrder, setShowModalDeleteOrder] = useState(false);
+  const [showModalProceedOrder, setShowModalProceedOrder] = useState(false);
 
   const [dataUpdate, setDataUpdate] = useState({});
   const [dataDelete, setDataDelete] = useState({});
+  const [dataProceed, setDataProceed] = useState({});
+
 
   const [listOrders, setListOrders] = useState([]);
 
@@ -35,6 +40,13 @@ const ManageOrder = (props) => {
   //   setListOrders(res); //xem database để đặt thêm sau res
   // };
 
+  const handleClickBtnProceed = (order) => {
+    setShowModalProceedOrder(true);
+    setDataProceed(order);
+    console.log(">>> proceed order ", order);
+
+  };
+
   const handleClickBtnUpdate = (order) => {
     setShowModalUpdateOrder(true);
     setDataUpdate(order);
@@ -47,11 +59,7 @@ const ManageOrder = (props) => {
     setDataDelete(order);
   };
 
-  // const handleClickBtnProceed = (order) => {
-  //   setShowModalProceedOrder(true);
-  //   console.log(">>> proceed order: ", order);
-  //   setDataProceed(order);
-  // };
+  
 
   useEffect(() => {
     fetchListOrders();
@@ -76,7 +84,7 @@ const ManageOrder = (props) => {
             listOrders={listOrders}
             handleClickBtnUpdate={handleClickBtnUpdate}
             handleClickBtnDelete={handleClickBtnDelete}
-            //handleClickBtnProceed={handleClickBtnProceed}
+            handleClickBtnProceed={handleClickBtnProceed}
           />
           {/* <TableOrdersPaginate
             listOrders={listOrders}
@@ -100,6 +108,12 @@ const ManageOrder = (props) => {
           show={showModalDeleteOrder}
           setShow={setShowModalDeleteOrder}
           dataDelete={dataDelete}
+          fetchListOrders={fetchListOrders}
+        />
+        <ModalProceedOrder
+          show={showModalProceedOrder}
+          setShow={setShowModalProceedOrder}
+          dataProceed={dataProceed}
           fetchListOrders={fetchListOrders}
         />
       </div>

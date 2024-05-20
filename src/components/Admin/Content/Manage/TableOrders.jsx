@@ -26,6 +26,12 @@ const TableOrders = (props) => {
                   <td>{item.endPoint}</td>
                   <td>{item.quickNote}</td>
                   <td>
+                  <button
+                      className="btn btn-success"
+                      onClick={() => props.handleClickBtnProceed(item)}
+                    >
+                      Proceed
+                    </button>
                     <button
                       className="btn btn-warning mx-3"
                       onClick={() => props.handleClickBtnUpdate(item)}
@@ -38,6 +44,7 @@ const TableOrders = (props) => {
                     >
                       Delete
                     </button>
+                    
                   </td>
                 </tr>
               );

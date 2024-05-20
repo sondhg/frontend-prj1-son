@@ -1,24 +1,22 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { deleteOrder } from "../../../../services/apiServices";
+import { proceedOrder } from "../../../../services/apiServices";
 import { toast } from "react-toastify";
 
-const ModalDeleteOrder = (props) => {
-  const { show, setShow, dataDelete } = props;
-
+const ModalProceedOrder = (props) => {
+  const { show, setShow, dataProceed } = props;
   const handleClose = () => setShow(false);
-  const handleSubmitDeleteOrder = async () => {
-    let data = await deleteOrder(dataDelete.id);
+  const handleSubmitProceedOrder = async () => {
+    let data = await proceedOrder(dataProceed);
 
     if (data) {
-      //chưa có validate
-
-      toast.success("Deletion done!");
+      toast.success("Order sent to AGV!");
       handleClose();
       await props.fetchListOrders();
     }
   };
+
   return (
     <>
       <Modal show={show} onHide={handleClose} backdrop="static">
@@ -30,29 +28,29 @@ const ModalDeleteOrder = (props) => {
             <li>
               Vehicle code:{" "}
               <b>
-                {dataDelete && dataDelete.vehicleCode
-                  ? dataDelete.vehicleCode
+                {dataProceed && dataProceed.vehicleCode
+                  ? dataProceed.vehicleCode
                   : ""}
               </b>{" "}
             </li>
             <li>
               Start point:{" "}
               <b>
-                {dataDelete && dataDelete.startPoint
-                  ? dataDelete.startPoint
+                {dataProceed && dataProceed.startPoint
+                  ? dataProceed.startPoint
                   : ""}
               </b>{" "}
             </li>
             <li>
               End point:{" "}
               <b>
-                {dataDelete && dataDelete.endPoint ? dataDelete.endPoint : ""}
+                {dataProceed && dataProceed.endPoint ? dataProceed.endPoint : ""}
               </b>{" "}
             </li>
             <li>
               Quick note:{" "}
               <b>
-                {dataDelete && dataDelete.quickNote ? dataDelete.quickNote : ""}
+                {dataProceed && dataProceed.quickNote ? dataProceed.quickNote : ""}
               </b>{" "}
             </li>
           </ul>
@@ -61,8 +59,8 @@ const ModalDeleteOrder = (props) => {
           <Button variant="secondary" onClick={() => handleClose()}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={() => handleSubmitDeleteOrder()}>
-            Confirm DELETE
+          <Button variant="primary" onClick={() => handleSubmitProceedOrder()}>
+            Confirm PROCEED
           </Button>
         </Modal.Footer>
       </Modal>
@@ -70,4 +68,4 @@ const ModalDeleteOrder = (props) => {
   );
 };
 
-export default ModalDeleteOrder;
+export default ModalProceedOrder;

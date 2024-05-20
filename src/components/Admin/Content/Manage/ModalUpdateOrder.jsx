@@ -55,10 +55,7 @@ const ModalUpdateOrder = (props) => {
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
+      
       <Modal
         show={show}
         onHide={handleClose}
@@ -126,7 +123,7 @@ const ModalUpdateOrder = (props) => {
             Close
           </Button>
           <Button variant="primary" onClick={handleSubmitCreateOrder}>
-            Submit order to server
+            Confirm UPDATE
           </Button>
         </Modal.Footer>
       </Modal>
