@@ -1,9 +1,22 @@
-const TableOrders = (props) => {
+import { useEffect, useState } from "react";
+import Table from "react-bootstrap/Table";
+import ReactPaginate from "react-paginate";
+
+const TableOrdersPaginate = (props) => {
   const { listOrders } = props; //giống const listOrders = props.listOrders
+
+  const [pageCount, setPageCount] = useState(0);
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    console.log(
+      `User requested page number ${event.selected}`
+    );
+  };
 
   return (
     <>
-      <table className="table table-hover table-bordered">
+      <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th scope="col">No.</th>
@@ -26,7 +39,7 @@ const TableOrders = (props) => {
                   <td>{item.endPoint}</td>
                   <td>{item.quickNote}</td>
                   <td>
-                  <button
+                    <button
                       className="btn btn-success"
                       onClick={() => props.handleClickBtnProceed(item)}
                     >
@@ -44,7 +57,6 @@ const TableOrders = (props) => {
                     >
                       Delete
                     </button>
-                    
                   </td>
                 </tr>
               );
@@ -55,9 +67,29 @@ const TableOrders = (props) => {
             </tr>
           )}
         </tbody>
-      </table>
+      </Table>
+      <ReactPaginate
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        pageCount={5}
+        previousLabel="< previous"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakLabel="..."
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
+        renderOnZeroPageCount={null}
+      />
     </>
   );
 };
 
-export default TableOrders;
+export default TableOrdersPaginate;

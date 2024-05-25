@@ -46,7 +46,7 @@ const deleteOrder = (orderId) => {
 };
 
 const proceedOrder = (order) => {
-  return axios.post("orderProceeded", order, {
+  return axios.post("orders-proceeded", order, {
     headers: {
       "Content-Type": "application/json",
     }, //biến order sẽ là 1 object, cần nghĩ cách post giống hàm postCreateNewOrder
@@ -60,11 +60,64 @@ const getOrderWithPaginate = (page, limit) => {
 };
 
 const getDisplayAgvParams = () => {
-  return axios.get("agv-display");
+  return axios.get("agv-parameters-display");
 };
 //có thể dùng cho TableDisplayAgvParams, nhưng code cũ chạy ổn r nên thôi
 
+//Phần dưới đây dùng cho User/Account
+const postCreateNewUser = (email, password, username, role) => {
+  const form = new FormData();
+  form.append("email", email);
+  form.append("password", password);
+  form.append("username", username);
+  form.append("role", role);
+
+  return axios.post("users", form, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+const getAllUsers = () => {
+  return axios.get(
+    "users" /* , {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  } */
+  );
+};
+
+const putUpdateUser = (id, password, username, role) => {
+  const form = new FormData();
+  //ko truyền vehicleCode vào props vì ta ko muốn người dùng edit trường đó khi update
+  //cần truyền biến id để biết đang xét order nào
+  form.append("id", id);
+  form.append("password", password);
+  form.append("username", username);
+  form.append("role", role);
+
+  return axios.put("users", form, {
+    headers: {
+      "Content-Type": "application/json", //cần database để sửa, có thể bỏ headers
+    },
+  });
+};
+
+const deleteUser = (userId) => {
+  return axios.delete("users", { data: { id: userId } });
+};
+
+//Dưới đây là cho Login
+const postLogin = (userEmail, userPassword) => {
+  return axios.post("login", { email: userEmail, password: userPassword });
+  //cần database của Hoàng Anh lấy được thông tin user từ http://localhost:8081/users
+  //được thêm vào qua chức năng Manage User
+};
+
 export {
+  //AGV
   postCreateNewOrder,
   getAllOrders,
   putUpdateOrder,
@@ -72,4 +125,13 @@ export {
   proceedOrder,
   getOrderWithPaginate,
   getDisplayAgvParams,
+  
+  //User
+  postCreateNewUser,
+  getAllUsers,
+  putUpdateUser,
+  deleteUser,
+
+  //Login
+  postLogin,
 };

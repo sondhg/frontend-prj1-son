@@ -1,12 +1,11 @@
 //import "./styles.scss";
 import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
-import Footer from "./components/Footer.jsx";
 //import "bootstrap/dist/css/bootstrap.min.css";
 
 //Application nằm trong App
 function Application() {
-  document.title = "AGV UI";
+  //document.title = "AGV UI";
   return (
     <div className="app-container">
       <div>
@@ -19,9 +18,9 @@ function Application() {
             <Outlet />
           </div>
         </div>
-        <div className="footer-container">
+        {/* <div className="footer-container">
           <Footer />
-        </div>
+        </div> */}
       </div>
     </div>
   );

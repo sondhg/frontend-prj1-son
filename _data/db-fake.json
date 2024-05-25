@@ -4,60 +4,25 @@
       "id": "4346",
       "vehicleCode": "McLaren",
       "startPoint": "A",
-      "endPoint": "A",
-      "quickNote": "test first order"
+      "endPoint": "B",
+      "quickNote": "ko quan trong lam"
     },
     {
       "id": "05b9",
       "vehicleCode": "Pagani",
-      "startPoint": "A",
-      "endPoint": "B",
-      "quickNote": "2nd order test thu nghiem"
-    },
-    {
-      "id": "e3e8",
-      "vehicleCode": "McLaren",
-      "startPoint": "A",
-      "endPoint": "A",
-      "quickNote": ""
-    },
-    {
-      "id": "477f",
-      "vehicleCode": "Bentley",
-      "startPoint": "A",
-      "endPoint": "B",
-      "quickNote": "bonbon"
-    },
-    {
-      "id": "e7a6",
-      "vehicleCode": "McLaren",
-      "startPoint": "A",
-      "endPoint": "A",
-      "quickNote": ""
-    },
-    {
-      "id": "1ec9",
-      "vehicleCode": "Pagani",
-      "startPoint": "B",
+      "startPoint": "D",
       "endPoint": "C",
-      "quickNote": "do duc toan"
+      "quickNote": "note linh tinh cho xe"
     },
     {
-      "id": "a91e",
+      "id": "b170",
       "vehicleCode": "McLaren",
       "startPoint": "A",
       "endPoint": "A",
-      "quickNote": "lol"
-    },
-    {
-      "id": "232d",
-      "vehicleCode": "Pagani",
-      "startPoint": "A",
-      "endPoint": "B",
-      "quickNote": "merge main and redo-style-bootstrap"
+      "quickNote": ""
     }
   ],
-  "agv-display": [
+  "agv-parameters-display": [
     {
       "vehicle_code": "Pagani",
       "Agv_speed": "30m/s",
@@ -70,27 +35,37 @@
     {
       "vehicle_code": "McLaren",
       "Agv_speed": "100m/s",
-      "is_obstacle": "Yes",
+      "is_obstacle": "No",
       "Agv_battery": "50%",
       "previous_node": "C",
       "next_node": "B",
       "id": "b08b"
     }
   ],
-  "orderProceeded": [
+  "orders-proceeded": [
     {
-      "id": "477f",
-      "vehicleCode": "Bentley",
-      "startPoint": "A",
-      "endPoint": "B",
-      "quickNote": "bonbon"
+      "id": "05b9",
+      "vehicleCode": "Pagani",
+      "startPoint": "D",
+      "endPoint": "C",
+      "quickNote": "note linh tinh cho xe"
+    }
+  ],
+  "users": [
+    {
+      "id": "f0bc",
+      "email": "cena@gmail.com",
+      "password": "johncena",
+      "username": "John",
+      "role": "USER"
     },
     {
-      "id": "232d",
-      "vehicleCode": "Pagani",
-      "startPoint": "A",
-      "endPoint": "B",
-      "quickNote": "merge main and redo-style-bootstrap"
+      "id": "91b9",
+      "email": "son@gmail.com",
+      "password": "lmao",
+      "username": "Hoang Son",
+      "role": "USER"
     }
-  ]
+  ],
+  "login": []
 }

@@ -1,7 +1,9 @@
+import { Table } from "react-bootstrap";
+
 const TableDisplayAgvParams = (props) => {
   const { listDisplayAgvParams } = props;
   return (
-    <table className="table table-hover table-bordered">
+    <Table striped bordered hover variant="info">
       <thead>
         <tr>
           <th scope="col">Vehicle code</th>
@@ -26,7 +28,7 @@ const TableDisplayAgvParams = (props) => {
             );
           })}
       </tbody>
-    </table>
+    </Table>
   );
 };
 

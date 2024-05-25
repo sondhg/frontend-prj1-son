@@ -1,4 +1,4 @@
-import ModalCreateOrder from "./ModalCreateOrder";
+import ModalCreateOrder from "./Modals/ModalCreateOrder";
 import "./ManageOrder.scss";
 import { FcPlus } from "react-icons/fc";
 import { useEffect, useState } from "react";
@@ -7,16 +7,16 @@ import {
   getOrderWithPaginate,
 } from "../../../../services/apiServices";
 import "react-toastify/dist/ReactToastify.css";
-import TableOrders from "./TableOrders";
-import ModalUpdateOrder from "./ModalUpdateOrder";
-import ModalDeleteOrder from "./ModalDeleteOrder";
-import ModalProceedOrder from "./ModalProceedOrder";
-import TableOrdersPaginate from "./TableOrdersPaginate";
+import TableOrders from "./DraftTable/TableOrders";
+import ModalUpdateOrder from "./Modals/ModalUpdateOrder";
+import ModalDeleteOrder from "./Modals/ModalDeleteOrder";
+import ModalProceedOrder from "./Modals/ModalProceedOrder";
+import TableOrdersPaginate from "./DraftTable/TableOrdersPaginate";
 
 const ManageOrder = (props) => {
   const LIMIT_ORDER = 6;
   const [showModalCreateOrder, setShowModalCreateOrder] = useState(false);
-  
+
   const [showModalUpdateOrder, setShowModalUpdateOrder] = useState(false);
   const [showModalDeleteOrder, setShowModalDeleteOrder] = useState(false);
   const [showModalProceedOrder, setShowModalProceedOrder] = useState(false);
@@ -25,26 +25,24 @@ const ManageOrder = (props) => {
   const [dataDelete, setDataDelete] = useState({});
   const [dataProceed, setDataProceed] = useState({});
 
-
   const [listOrders, setListOrders] = useState([]);
 
   const fetchListOrders = async () => {
     let res = await getAllOrders();
-    console.log(res);
+    console.log(">>> res: ", res);
     setListOrders(res); //xem database để đặt thêm sau res
   };
 
-  // const fetchListOrdersWithPaginate = async (page) => {
-  //   let res = await getOrderWithPaginate(page, LIMIT_ORDER);
-  //   console.log(res);
-  //   setListOrders(res); //xem database để đặt thêm sau res
-  // };
+  const fetchListOrdersWithPaginate = async (page) => {
+    let res = await getOrderWithPaginate(page, LIMIT_ORDER);
+    console.log(">>> res: ", res);
+    setListOrders(res); //xem database để đặt thêm sau res
+  };
 
   const handleClickBtnProceed = (order) => {
     setShowModalProceedOrder(true);
     setDataProceed(order);
     console.log(">>> proceed order ", order);
-
   };
 
   const handleClickBtnUpdate = (order) => {
@@ -59,11 +57,10 @@ const ManageOrder = (props) => {
     setDataDelete(order);
   };
 
-  
-
   useEffect(() => {
     fetchListOrders();
     //fetchListOrdersWithPaginate(1);
+    //dùng TableOrdersPaginate thì hẵng off comment
   }, []);
 
   return (

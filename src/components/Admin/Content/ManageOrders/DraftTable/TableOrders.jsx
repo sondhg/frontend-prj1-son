@@ -1,18 +1,10 @@
-import { useEffect, useState } from "react";
-import ReactPaginate from "react-paginate";
-
-const TableOrdersPaginate = (props) => {
+import Table from 'react-bootstrap/Table';
+const TableOrders = (props) => {
   const { listOrders } = props; //giống const listOrders = props.listOrders
-
-  const [pageCount, setPageCount] = useState(0);
-
-  const handlePageClick = (event) => {
-    console.log(`User requested page number ${event.selected}`);
-  };
 
   return (
     <>
-      <table className="table table-hover table-bordered">
+      <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th scope="col">No.</th>
@@ -35,7 +27,12 @@ const TableOrdersPaginate = (props) => {
                   <td>{item.endPoint}</td>
                   <td>{item.quickNote}</td>
                   <td>
-                    <button className="btn btn-secondary mx-3" >View</button>
+                  <button
+                      className="btn btn-success"
+                      onClick={() => props.handleClickBtnProceed(item)}
+                    >
+                      Proceed
+                    </button>
                     <button
                       className="btn btn-warning mx-3"
                       onClick={() => props.handleClickBtnUpdate(item)}
@@ -43,50 +40,25 @@ const TableOrdersPaginate = (props) => {
                       Update
                     </button>
                     <button
-                      className="btn btn-danger mx-3"
+                      className="btn btn-danger"
                       onClick={() => props.handleClickBtnDelete(item)}
                     >
                       Delete
                     </button>
-                    <button
-                      className="btn btn-success mx-3"
-                      onClick={() => props.handleClickBtnProceed(item)}
-                    >
-                      Proceed
-                    </button>
+                    
                   </td>
                 </tr>
               );
             })}
           {listOrders && listOrders.length === 0 && (
             <tr>
-              <td colSpan={"4"}>Data not found</td>
+              <td colSpan={"6"}>Data not found</td>
             </tr>
           )}
         </tbody>
-      </table>
-      <ReactPaginate
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={2}
-        pageCount={5}
-        previousLabel="< previous"
-        pageClassName="page-item"
-        pageLinkClassName="page-link"
-        previousClassName="page-item"
-        previousLinkClassName="page-link"
-        nextClassName="page-item"
-        nextLinkClassName="page-link"
-        breakLabel="..."
-        breakClassName="page-item"
-        breakLinkClassName="page-link"
-        containerClassName="pagination"
-        activeClassName="active"
-        renderOnZeroPageCount={null}
-      />
+      </Table>
     </>
   );
 };
 
-export default TableOrdersPaginate;
+export default TableOrders;

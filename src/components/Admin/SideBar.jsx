@@ -9,7 +9,7 @@ import {
   SidebarContent,
 } from "react-pro-sidebar";
 import { FaList, FaGithub } from "react-icons/fa";
-import { MdDashboard } from "react-icons/md";
+import { MdDashboard, MdManageAccounts } from "react-icons/md";
 import sidebarBg from "../../assets/bg2.jpg";
 import { Link } from "react-router-dom";
 
@@ -56,18 +56,24 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
               //   suffix={<span className="badge yellow">3</span>}
               //   icon={<FaRegLaughWink />}
               icon={<FaList />}
-              title="Features"
+              title="Orders"
             >
               <MenuItem>
                 Manage Orders
                 <Link to="/admin/manage-orders" />
               </MenuItem>
               <MenuItem>
-                {" "}
                 Real-time Data Display
                 <Link to="/admin/agv-params-display" />
               </MenuItem>
-              <MenuItem> Tính năng 3</MenuItem>
+            </SubMenu>
+          </Menu>
+          <Menu iconShape="circle">
+            <SubMenu icon={<MdManageAccounts />} title="Users">
+              <MenuItem>
+                Manage Users
+                <Link to="/admin/manage-users" />
+              </MenuItem>
             </SubMenu>
           </Menu>
         </SidebarContent>

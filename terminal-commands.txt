@@ -3,3 +3,5 @@ npm run dev
 npx json-server --watch _data/db-fake.json --port 8081
 
 Đang lỗi ko update order đc. Lỗi ở hàm putUpdateOrder ở file apiServices.jsx, axios.put đang ko tìm đc tới database JSON, hiện 404 not found
+
+xem file hoidanit, tải các thư viện cần thiết liên quan redux

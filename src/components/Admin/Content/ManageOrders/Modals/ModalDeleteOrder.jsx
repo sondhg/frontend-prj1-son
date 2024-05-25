@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { deleteOrder } from "../../../../services/apiServices";
+import { deleteOrder } from "../../../../../services/apiServices";
 import { toast } from "react-toastify";
 
 const ModalDeleteOrder = (props) => {
@@ -61,7 +61,7 @@ const ModalDeleteOrder = (props) => {
           <Button variant="secondary" onClick={() => handleClose()}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={() => handleSubmitDeleteOrder()}>
+          <Button variant="danger" onClick={() => handleSubmitDeleteOrder()}>
             Confirm DELETE
           </Button>
         </Modal.Footer>

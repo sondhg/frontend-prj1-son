@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { FcPlus } from "react-icons/fc";
 import { toast } from "react-toastify";
-import { postCreateNewOrder } from "../../../../services/apiServices";
+import { putUpdateOrder } from "../../../../../services/apiServices";
+import _ from "lodash";
 
-const ModalCreateOrder = (props) => {
-  const { show, setShow } = props;
+const ModalUpdateOrder = (props) => {
+  const { show, setShow, dataUpdate } = props;
+  //ko cần dùng props.dataUpdate ở phần code sau nữa, chỉ cần dùng biến dataUpdate
 
   const handleClose = () => {
     setShow(false);
@@ -22,24 +23,30 @@ const ModalCreateOrder = (props) => {
   const [quickNote, setQuickNote] = useState("");
   //const [isPending, setIsPending] = useState(false);
 
+  useEffect(() => {
+    if (!_.isEmpty(dataUpdate)) {
+      //Nếu biến dataUpdate ko rỗng thì update state
+      setVehicleCode(dataUpdate.vehicleCode);
+      setStartPoint(dataUpdate.startPoint);
+      setEndPoint(dataUpdate.endPoint);
+      setQuickNote(dataUpdate.quickNote);
+    }
+  }, [props.dataUpdate]);
+
   const handleSubmitCreateOrder = async () => {
     //validate: mai làm sau
 
-    if (!quickNote) {
-      toast.warning("Adding a note is always recommended!");
-    }
-
-    let data = await postCreateNewOrder(
-      vehicleCode,
+    let data = await putUpdateOrder(
+      dataUpdate.id,
       startPoint,
       endPoint,
       quickNote
     );
-
+    //cần phần headers thì mới chạy đc, vì json-server của mình ko hoạt động với formdata giống video
     if (data) {
       //chưa có validate
 
-      toast.success("Order successfully added!");
+      toast.success("Update succeeded!");
       handleClose();
       await props.fetchListOrders();
     }
@@ -47,10 +54,7 @@ const ModalCreateOrder = (props) => {
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
+      
       <Modal
         show={show}
         onHide={handleClose}
@@ -59,7 +63,7 @@ const ModalCreateOrder = (props) => {
         className="modal-add-order"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add new order</Modal.Title>
+          <Modal.Title>Update an order</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
@@ -69,6 +73,7 @@ const ModalCreateOrder = (props) => {
                 className="form-select"
                 value={vehicleCode}
                 onChange={(event) => setVehicleCode(event.target.value)}
+                disabled //tương đương disabled={true}, tức ko cho phép thay đổi trường vehicleCode
               >
                 <option value="McLaren">McLaren</option>
                 <option value="Pagani">Pagani</option>
@@ -117,7 +122,7 @@ const ModalCreateOrder = (props) => {
             Close
           </Button>
           <Button variant="primary" onClick={handleSubmitCreateOrder}>
-            Submit order to server
+            Confirm UPDATE
           </Button>
         </Modal.Footer>
       </Modal>
@@ -125,4 +130,4 @@ const ModalCreateOrder = (props) => {
   );
 };
 
-export default ModalCreateOrder;
+export default ModalUpdateOrder;
