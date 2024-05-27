@@ -3,12 +3,21 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { useSelector } from "react-redux";
+import { Button } from "react-bootstrap";
 
 const Header = () => {
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const account = useSelector((state) => state.user.account);
+
   const navigate = useNavigate();
 
   const handleLogin = () => {
     navigate("/login");
+  };
+
+  const handleRegister = () => {
+    navigate("/register");
   };
   return (
     <Navbar
@@ -19,7 +28,7 @@ const Header = () => {
     >
       <Container>
         <NavLink to="/" className="navbar-brand">
-          AGV Command Board
+          AGV System
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -31,20 +40,31 @@ const Header = () => {
               Admin
             </NavLink>
             <Nav>
-              <NavDropdown title="Account" id="basic-nav-dropdown">
-                <NavDropdown.Item
-                  className="btn-login"
-                  onClick={() => handleLogin()}
-                >
-                  Log in
-                </NavDropdown.Item>
-                <NavDropdown.Item className="btn-signup">
-                  Sign up
-                </NavDropdown.Item>
-                <NavDropdown.Item className="btn-logout">
-                  Log out
-                </NavDropdown.Item>
-              </NavDropdown>
+              {/* Nếu isAuthenticated = true, tức là ng dùng đã đăng nhập rồi 
+              thì mới hiện cái dropdown, còn ko thì chỉ hiện 2 button */}
+              {isAuthenticated === false ? (
+                <>
+                  <Button
+                    variant="info"
+                    className="btn-login mx-3"
+                    onClick={() => handleLogin()}
+                  >
+                    Log in
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    className="btn-signup mx-3"
+                    onClick={() => handleRegister()}
+                  >
+                    Signup
+                  </Button>
+                </>
+              ) : (
+                <NavDropdown title="Account" id="basic-nav-dropdown">
+                  <NavDropdown.Item>Log out</NavDropdown.Item>
+                  <NavDropdown.Item>Profile</NavDropdown.Item>
+                </NavDropdown>
+              )}
             </Nav>
           </Nav>
         </Navbar.Collapse>

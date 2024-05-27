@@ -14,6 +14,7 @@ const DashBoard = (props) => {
             <span className="text-1">Total Proceeded Orders</span>
             <span className="text-2">3</span>
           </div>
+          
         </div>
         <div className="c-right"></div>
       </div>

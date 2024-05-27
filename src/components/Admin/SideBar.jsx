@@ -12,8 +12,11 @@ import { FaList, FaGithub } from "react-icons/fa";
 import { MdDashboard, MdManageAccounts } from "react-icons/md";
 import sidebarBg from "../../assets/bg2.jpg";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "./Admin.scss";
 
 const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
+  const navigate = useNavigate();
   return (
     <>
       <ProSidebar
@@ -34,9 +37,11 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
               overflow: "hidden",
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
+              cursor: "pointer",
             }}
+            onClick={() => navigate("/")}
           >
-            AGV Command Board
+            Back to Home page
           </div>
         </SidebarHeader>
 

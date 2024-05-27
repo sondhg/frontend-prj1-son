@@ -1,4 +1,4 @@
-
+//chỉ là file mẫu tải sẵn về cùng redux, ko liên quan project
 import { INCREMENT, DECREMENT } from '../action/counterAction';
 const INITIAL_STATE = {
     count: 0,

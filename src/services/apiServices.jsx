@@ -111,9 +111,21 @@ const deleteUser = (userId) => {
 
 //Dưới đây là cho Login
 const postLogin = (userEmail, userPassword) => {
-  return axios.post("login", { email: userEmail, password: userPassword });
+  return axios.post(/* "/api/v1/login" */ "login", {
+    email: userEmail,
+    password: userPassword,
+    delay: 5000,
+  });
   //cần database của Hoàng Anh lấy được thông tin user từ http://localhost:8081/users
   //được thêm vào qua chức năng Manage User
+};
+
+const postRegister = (email, password, username) => {
+  return axios.post(/* "api/v1/register" */ "register", {
+    email,
+    password,
+    username,
+  });
 };
 
 export {
@@ -125,7 +137,7 @@ export {
   proceedOrder,
   getOrderWithPaginate,
   getDisplayAgvParams,
-  
+
   //User
   postCreateNewUser,
   getAllUsers,
@@ -134,4 +146,53 @@ export {
 
   //Login
   postLogin,
+
+  //Register
+  postRegister,
 };
+
+
+// const postCreateNewUser = (email, password, username, role) => {
+//   const form = new FormData();
+//   form.append("email", email);
+//   form.append("password", password);
+//   form.append("username", username);
+//   form.append("role", role);
+//   return axios.post("users", form);
+// };
+
+// const getAllUsers = () => {
+//   return axios.get("users");
+// };
+
+// const putUpdateUser = (id, password, username, role) => {
+//   const form = new FormData();
+//   //ko truyền vehicleCode vào props vì ta ko muốn người dùng edit trường đó khi update
+//   //cần truyền biến id để biết đang xét order nào
+//   form.append("id", id);
+//   form.append("password", password);
+//   form.append("username", username);
+//   form.append("role", role);
+
+//   return axios.put("users", form,);
+// };
+
+// const deleteUser = (userId) => {
+//   return axios.delete("users", { data: { id: userId } });
+// };
+
+// const postLogin = (userEmail, userPassword) => {
+//   return axios.post("/api/v1/login", {
+//     email: userEmail,
+//     password: userPassword,
+//     delay: 5000, //chỉ để tạo thanh loading
+//   });
+// };
+
+// const postRegister = (email, password, username) => {
+//   return axios.post("api/v1/register", {
+//     email,
+//     password,
+//     username,
+//   });
+// };

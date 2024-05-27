@@ -1,7 +1,22 @@
-npm run dev
+- Mở 1 terminal khi đã cd vào trong folder tổng và nhập lệnh chạy ứng dụng: npm run dev
 
-npx json-server --watch _data/db-fake.json --port 8081
+Bấm vào link localhost:5173 để xem UI
 
-Đang lỗi ko update order đc. Lỗi ở hàm putUpdateOrder ở file apiServices.jsx, axios.put đang ko tìm đc tới database JSON, hiện 404 not found
+- Mở 1 terminal KHÁC, vẫn trong folder đó và nhập lệnh chạy database ảo: npx json-server --watch _data/db-fake.json --port 8081
 
-xem file hoidanit, tải các thư viện cần thiết liên quan redux
+Mở các nhánh của localhost:8081 lên để xem thay đổi, hoặc mở luôn file db-fake.json bên trong folder _data để xem và sửa đổi theo ý muốn
+
+- Các lỗi hiện tại:
+    Đang lỗi ko update order đc. Lỗi ở hàm putUpdateOrder ở file apiServices.jsx, axios.put đang ko tìm đc tới database JSON, hiện 404 not found
+
+    Vì chưa test đc với database của Hoàng Anh nên các API và logic xử lý đang có nhiều lỗi. Ví dụ: 1 response trả về cho 1 request chỉ có "data" chứ chưa có "data.EC", "data.EM", "data.DT"
+
+
+- Tài liệu học:
+    + Playlist tôi dùng học React:
+    https://www.youtube.com/playlist?list=PLncHg6Kn2JT7QbvdNNAmQZLqWchnJEoH5
+
+    + Tài liệu PDF của khóa học: Check mục lục cho dễ tìm phần mình cần
+    https://drive.google.com/drive/folders/1WYAyusS4m498bqCR8iyzRYmS26zGh8g-
+
+    (Khóa học này đã viết sẵn backend)

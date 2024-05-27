@@ -1,44 +1,46 @@
+import agvmap from "../../assets/agvmap.png";
+
 const Instruction = () => {
-  const instructText = (
+  return (
     <div>
-      <div class="p-5 bg-primary text-white text-center">
-        <h1>Project 1 - AGV System</h1>
+      <div className="p-5 bg-primary text-white text-center">
+        <h1>AGV System</h1>
         <p>Please follow the operation instructions below.</p>
       </div>
 
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-sm-4">
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col-sm-4">
             <h2>Map</h2>
-            <div class="fakeimg">Insert map image here</div>
-            <p>Map image description...</p>
-            {/* <h3 class="mt-4">Some Links</h3>
+            <div className="fakeimg"><img src={agvmap} width="300px"></img></div>
+            <p>All paths are measured in centimeters.</p>
+            {/* <h3 className="mt-4">Some Links</h3>
             <p>Lorem ipsum dolor sit ame.</p>
-            <ul class="nav nav-pills flex-column">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
+            <ul className="nav nav-pills flex-column">
+              <li className="nav-item">
+                <a className="nav-link active" href="#">
                   Active
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+              <li className="nav-item">
+                <a className="nav-link" href="#">
                   Link
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+              <li className="nav-item">
+                <a className="nav-link" href="#">
                   Link
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">
+              <li className="nav-item">
+                <a className="nav-link disabled" href="#">
                   Disabled
                 </a>
               </li>
             </ul> */}
-            <hr class="d-sm-none" />
+            <hr className="d-sm-none" />
           </div>
-          <div class="col-sm-8">
+          <div className="col-sm-8">
             <h2>How to operate the system?</h2>
             <h5>Follow this step-by-step instruction:</h5>
             <ol className="white">
@@ -76,7 +78,7 @@ const Instruction = () => {
         </div>
       </div>
 
-      <div class="mt-5 p-4 bg-dark text-white text-center">
+      <div className="mt-5 p-4 bg-dark text-white text-center">
         <p>
           &copy; Pham Hoang Anh, Dinh Hoang Son and Do Duc Toan - iPAC Lab,{" "}
           {new Date().getFullYear()}
@@ -84,7 +86,6 @@ const Instruction = () => {
       </div>
     </div>
   );
-  return instructText;
 };
 
 export default Instruction;

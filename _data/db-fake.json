@@ -20,6 +20,13 @@
       "startPoint": "A",
       "endPoint": "A",
       "quickNote": ""
+    },
+    {
+      "id": "6f38",
+      "vehicleCode": "McLaren",
+      "startPoint": "A",
+      "endPoint": "A",
+      "quickNote": "hà chi"
     }
   ],
   "agv-parameters-display": [
@@ -65,7 +72,22 @@
       "password": "lmao",
       "username": "Hoang Son",
       "role": "USER"
+    },
+    {
+      "id": "1468",
+      "email": "Chy@gmail.comanhkhoaitay",
+      "password": "chy;pz",
+      "username": "Phạm Vũ",
+      "role": "USER"
     }
   ],
-  "login": []
+  "login": [],
+  "register": [
+    {
+      "id": "99d1",
+      "email": "testerman@yahoo.hust",
+      "password": "johnman",
+      "username": "cenaman"
+    }
+  ]
 }

@@ -10,6 +10,7 @@ import Admin from "./components/Admin/Admin.jsx";
 import DashBoard from "./components/Admin/Content/Dashboard/DashBoard.jsx";
 import ManageDisplayAgvParams from "./components/Admin/Content/Display/ManageDisplayAgvParams.jsx";
 import Login from "./components/Auth/Login.jsx";
+import Register from "./components/Auth/Register.jsx";
 import ManageUser from "./components/Admin/Content/ManageUsers/ManageUser.jsx";
 const Layout = (props) => {
   return (
@@ -32,7 +33,9 @@ const Layout = (props) => {
             <Route path="manage-users" element={<ManageUser />} />
           </Route>
 
-          <Route path="login" element={<Login />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+
         </Route>
       </Routes>
 
